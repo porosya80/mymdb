@@ -9,7 +9,7 @@ class Movie(models.Model):
     RATINGS = (
         (NOT_RATED, "NR - Not Rated"),
         (RATED_G, "G - Genetal Audiences"),
-        (RATED_PG, "PG - Parental Guidance" "Suggested"),
+        (RATED_PG, "PG - Parental Guidance Suggested"),
         (RATED_R, "Restricted"),
     )
 
@@ -19,6 +19,9 @@ class Movie(models.Model):
     rating = models.IntegerField(choices=RATINGS, default=NOT_RATED)
     runtime = models.PositiveIntegerField()
     website = models.URLField(blank=True)
+
+    class Meta:
+        ordering = ("-year",'title')
 
     def __str__(self):
         return "{} ({})".format(self.title, self.year)
