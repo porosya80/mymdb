@@ -18,4 +18,28 @@
         {{object.get_rating_display}}
     </span>
 </div>
+<div>
+{% if vote_form %}
+
+<form action="{{ vore_form_url }}" method="post">
+{% csrf_token %}
+{{ vore_form.as_p }}
+<button class="btn btn-primary">Vote</button>
+
+
+
+</form>
+
+{% else %}
+
+<p>Log in to vote for this movie</p>
+
+
+
+{% endif %}
+
+
+
+
+</div>
 {% endblock sidebar %}
